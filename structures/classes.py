@@ -1,4 +1,5 @@
 import time
+from hashlib import sha256
 
 from selenium.webdriver.remote.webdriver import WebDriver
 
@@ -16,11 +17,15 @@ class WaitForPageLoadAfterAction(object):
         self.timeout = timeout
 
     def __enter__(self):
-        self.old_page = self.driver.find_element_by_tag_name("html")
+        self.old_id = self.driver.find_element_by_tag_name("html").id
+        self.old_hash = sha256(self.driver.page_source.encode('utf-8')).hexdigest()
 
     def page_has_loaded(self):
         new_page = self.driver.find_element_by_tag_name("html")
-        return new_page.id != self.old_page.id
+        new_hash = sha256(self.driver.page_source.encode('utf-8')).hexdigest()
+        ids_dont_match = new_page.id != self.old_id
+        hashes_dont_match = new_hash != self.old_hash
+        return ids_dont_match and hashes_dont_match
 
     def __exit__(self, *_):
         self.wait_for(self.page_has_loaded, timeout=self.timeout)

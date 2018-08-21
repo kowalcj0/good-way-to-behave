@@ -11,8 +11,9 @@ class WaitForPageLoadAfterAction(object):
     https://www.develves.net/blogs/asd/2017-03-04-selenium-waiting-for-page-load/
     """
 
-    def __init__(self, driver: WebDriver):
+    def __init__(self, driver: WebDriver, *, timeout: int = 3):
         self.driver = driver
+        self.timeout = timeout
 
     def __enter__(self):
         self.old_page = self.driver.find_element_by_tag_name("html")
@@ -22,12 +23,12 @@ class WaitForPageLoadAfterAction(object):
         return new_page.id != self.old_page.id
 
     def __exit__(self, *_):
-        self.wait_for(self.page_has_loaded)
+        self.wait_for(self.page_has_loaded, timeout=self.timeout)
 
     @staticmethod
-    def wait_for(condition_function):
+    def wait_for(condition_function, timeout: int = 3):
         start_time = time.time()
-        while time.time() < start_time + 3:
+        while time.time() < start_time + timeout:
             if condition_function():
                 return True
             else:

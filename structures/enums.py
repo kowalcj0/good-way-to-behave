@@ -7,6 +7,7 @@ from typing import Dict
 
 class Services(Enum):
     SEARX = "SearX"
+    DUCKDUCKGO = "DuckDuckGo"
 
 
 class PageObjects(Enum):

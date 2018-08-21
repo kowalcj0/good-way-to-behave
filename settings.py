@@ -6,6 +6,7 @@ from datetime import datetime
 import config
 
 SEARX_URL = os.environ.get("SEARX_URL", "https://find.kraal.one/")
+DUCKDUCKGO_URL = os.environ.get("DUCKDUCKGO_URL", "https://duckduckgo.com/")
 
 # variables set in Paver configuration file
 CONFIG_NAME = os.environ.get("CONFIG", "local")

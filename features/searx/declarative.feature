@@ -1,3 +1,4 @@
+@searx
 Feature: Search using SearX
 
   @TICKET-001
@@ -17,8 +18,8 @@ Feature: Search using SearX
 
   @TICKET-002
   @search
-  Scenario Outline: Users should be able to continue searching for "<new term>" after they searched for "<specific term>"
-    Given "Robert" searched for "<specific term>"
+  Scenario Outline: Users should be able to continue searching for "<new term>" after they searched for "<specific term>" using SearX
+    Given "Robert" searched for "<specific term>" using "SearX"
 
     When "Robert" searches for "<new term>"
 
@@ -33,7 +34,7 @@ Feature: Search using SearX
   @TICKET-003
   @search
   @<selected>
-  Scenario Outline: Users should be able search for "<specific term>" in "<selected>" category
+  Scenario Outline: Users should be able search for "<specific term>" in "<selected>" category using SearX
     Given "Robert" is on the "SearX - Home" page
 
     When "Robert" searches for "<specific term>" in "<selected>" category
@@ -44,8 +45,8 @@ Feature: Search using SearX
       | specific term | selected     | expected                                               |
       | pyconpl       | General      | https://pl.pycon.org/                                  |
       | pyconpl       | It           | https://github.com/zefciu/pyramid-concepts             |
-      | pyconpl       | Social Media | https://twitter.com/timosiia/status/899205699737190400 |
       | pyconpl       | Videos       | https://www.youtube.com/user/pyconpl                   |
+      | pyconpl       | Social Media | https://twitter.com/timosiia/status/899205699737190400 |
 
     @wip
     Examples: no search results or unreliable search in following categories
@@ -56,20 +57,3 @@ Feature: Search using SearX
       | pyconpl       | Map      | https://pl.pycon.org/                       |
       | pyconpl       | News     | https://pl.pycon.org/                       |
       | pyconpl       | Science  | https://pl.pycon.org/                       |
-
-
-  @TICKET-004
-  @search
-  @<selected>
-  Scenario Outline: Users should be able to continue searching for "<new term>" in "<selected>" category after they searched for "<specific term>"
-    Given "Robert" searched for "<specific term>"
-
-    When "Robert" searches for "<specific term>" in "<selected>" category
-
-    Then "Robert" should see link to "<expected>" page among search results
-
-    Examples:
-      | specific term | selected     | expected                                               |
-      | pyconpl       | It           | https://github.com/zefciu/pyramid-concepts             |
-      | pyconpl       | Music        | https://www.youtube.com/watch?v=wt6LmnKyAUw            |
-      | pyconpl       | Social Media | https://twitter.com/timosiia/status/899205699737190400 |

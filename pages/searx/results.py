@@ -19,8 +19,8 @@ from structures.enums import Services
 
 NAME = "Search Results"
 SERVICE = Services.SEARX.value
-TYPE = "home"
-URL = SEARX_URL
+TYPE = "results"
+URL = urljoin(SEARX_URL, "?q=")
 
 INPUT_BOX = Selector("input field", By.ID, "q")
 SEARCH_BUTTON = Selector(
@@ -54,7 +54,7 @@ SELECTORS = {
 
 
 def is_here(driver: WebDriver):
-    check_url(driver, URL, exact_match=True)
+    check_url(driver, URL, exact_match=False)
     can_see_elements(driver, SELECTORS)
     logging.debug("All expected elements are visible on '%s' page", NAME)
 

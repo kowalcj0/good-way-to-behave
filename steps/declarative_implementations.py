@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Step implementations"""
+from types import ModuleType
+
 from behave.runner import Context
 from retrying import retry
 from selenium.common.exceptions import TimeoutException, WebDriverException
@@ -12,7 +14,6 @@ from pages.common import (
     unauthenticated_actor,
     update_actor,
 )
-from pages.searx import results as searx_result_page
 from steps import has_action
 
 
@@ -47,11 +48,12 @@ def visit_page(context: Context, actor_alias: str, page_name: str):
 
 def search_for(
     context: Context, actor_alias: str, term: str, *, category: str = None
-):
+) -> ModuleType:
     page = get_last_visited_page(context, actor_alias)
     has_action(page, "search")
-    page.search(context.driver, term, category=category)
-    update_actor(context, actor_alias, visited_page=searx_result_page)
+    result_page = page.search(context.driver, term, category=category)
+    update_actor(context, actor_alias, visited_page=result_page)
+    return result_page
 
 
 def should_see_url(context: Context, actor_alias: str, url: str):

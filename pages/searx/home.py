@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import logging
+from types import ModuleType
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
@@ -63,7 +64,7 @@ def is_here(driver: WebDriver):
     logging.debug("All expected elements are visible on '%s' page", NAME)
 
 
-def search(driver: WebDriver, term: str, *, category: str = None):
+def search(driver: WebDriver, term: str, *, category: str = None) -> ModuleType:
     if category:
         label = f"checkbox_{category.lower().replace(' ', '_')}"
         category_selector = Selector(
@@ -74,3 +75,5 @@ def search(driver: WebDriver, term: str, *, category: str = None):
     find_and_type(driver, INPUT_BOX, term)
     find_and_click(driver, SEARCH_BUTTON)
     take_screenshot(driver, "After searching")
+    from . import results
+    return results

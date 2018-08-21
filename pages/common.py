@@ -87,12 +87,13 @@ def find_and_click(
     *,
     wait_for_it: bool = True,
     wait_for_page_load: bool = True,
+    timeout: int = 3,
 ):
     """Find page element in any page section selectors and click on it."""
     web_element = find_element(driver, selector, wait_for_it=wait_for_it)
     check_if_element_is_visible(web_element, selector.name)
     if wait_for_page_load:
-        with WaitForPageLoadAfterAction(driver):
+        with WaitForPageLoadAfterAction(driver, timeout=timeout):
             web_element.click()
     else:
         web_element.click()

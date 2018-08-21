@@ -33,6 +33,7 @@ def then_should_see_url(context: Context, actor_alias: str, url: str):
     should_see_url(context, actor_alias, url)
 
 
-@given('"{actor_alias}" searched for "{term}"')
-def given_actor_searched_for(context: Context, actor_alias: str, term: str):
-    visit_and_search(context, actor_alias, term)
+@given('"{actor_alias}" searched for "{term}" using "{search_engine}"')
+def given_actor_searched_for(
+        context: Context, actor_alias: str, term: str, search_engine: str):
+    visit_and_search(context, actor_alias, term, search_engine)

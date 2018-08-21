@@ -62,7 +62,8 @@ def should_see_url(context: Context, actor_alias: str, url: str):
     page.should_see_url(context.driver, url)
 
 
-def visit_and_search(context: Context, actor_alias: str, term: str):
-    visit_page(context, actor_alias, "SearX - Home")
-    search_for(context, actor_alias, term)
-    update_actor(context, actor_alias, visited_page=searx_result_page)
+def visit_and_search(
+        context: Context, actor_alias: str, term: str, search_engine: str):
+    visit_page(context, actor_alias, f"{search_engine} - Home")
+    result_page = search_for(context, actor_alias, term)
+    update_actor(context, actor_alias, visited_page=result_page)

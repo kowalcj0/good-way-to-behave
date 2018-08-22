@@ -3,8 +3,8 @@ Feature: Search using DuckDuckGo
 
   @TICKET-011
   @search
-  Scenario Outline: Users should be able to find something on "<specific term>" using SearX
-    Given "Robert" is on the "DuckDuckGo - Home" page
+  Scenario Outline: Users should be able to find something on "<specific term>" using DuckDuckGo
+    Given "Robert" decided to search the Internet using "DuckDuckGo"
 
     When "Robert" searches for "<specific term>"
 
@@ -35,7 +35,7 @@ Feature: Search using DuckDuckGo
   @search
   @<selected>
   Scenario Outline: Users should be able search for "<specific term>" in "<selected>" category using "DuckDuckGo"
-    Given "Robert" is on the "DuckDuckGo - Home" page
+    Given "Robert" decided to search the Internet using "DuckDuckGo"
 
     When "Robert" searches for "<specific term>" in "<selected>" category
 

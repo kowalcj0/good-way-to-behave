@@ -4,7 +4,7 @@ Feature: Search using SearX
   @TICKET-001
   @search
   Scenario Outline: Users should be able to find something on "<specific term>" using SearX
-    Given "Robert" is on the "SearX - Home" page
+    Given "Robert" decided to search the Internet using "SearX"
 
     When "Robert" searches for "<specific term>"
 
@@ -35,7 +35,7 @@ Feature: Search using SearX
   @search
   @<selected>
   Scenario Outline: Users should be able search for "<specific term>" in "<selected>" category using SearX
-    Given "Robert" is on the "SearX - Home" page
+    Given "Robert" decided to search the Internet using "SearX"
 
     When "Robert" searches for "<specific term>" in "<selected>" category
 

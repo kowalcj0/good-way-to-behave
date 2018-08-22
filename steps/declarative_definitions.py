@@ -25,6 +25,12 @@ def given_actor_chose_search_engine(
     go_to_search_engine(context, actor_alias, search_engine)
 
 
+@given('"{actor_alias}" searched for "{term}" using "{search_engine}"')
+def given_actor_searched_for(
+        context: Context, actor_alias: str, term: str, search_engine: str):
+    visit_and_search(context, actor_alias, term, search_engine)
+
+
 @when('"{actor_alias}" searches for "{term}" in "{category}" category')
 def step_impl(context: Context, actor_alias: str, term: str, category: str):
     search_for(context, actor_alias, term, category=category)
@@ -38,9 +44,3 @@ def when_actor_searches_for(context: Context, actor_alias: str, term: str):
 @then('"{actor_alias}" should see link to "{url}" page among search results')
 def then_should_see_url(context: Context, actor_alias: str, url: str):
     should_see_url(context, actor_alias, url)
-
-
-@given('"{actor_alias}" searched for "{term}" using "{search_engine}"')
-def given_actor_searched_for(
-        context: Context, actor_alias: str, term: str, search_engine: str):
-    visit_and_search(context, actor_alias, term, search_engine)

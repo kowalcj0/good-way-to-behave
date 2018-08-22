@@ -46,6 +46,11 @@ def visit_page(context: Context, actor_alias: str, page_name: str):
     update_actor(context, actor_alias, visited_page=page)
 
 
+def go_to_search_engine(context, actor_alias, search_engine):
+    page_name = f"{search_engine} - Home"
+    visit_page(context, actor_alias, page_name)
+
+
 def search_for(
     context: Context, actor_alias: str, term: str, *, category: str = None
 ) -> ModuleType:

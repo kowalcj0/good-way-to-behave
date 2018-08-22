@@ -4,6 +4,7 @@ from behave import given, then, when
 from behave.runner import Context
 
 from steps.declarative_implementations import (
+    go_to_search_engine,
     search_for,
     should_see_url,
     visit_and_search,
@@ -16,6 +17,12 @@ def given_actor_visits_page(
     context: Context, actor_alias: str, page_name: str
 ):
     visit_page(context, actor_alias, page_name)
+
+
+@given('"{actor_alias}" decided to search the Internet using "{search_engine}"')
+def given_actor_chose_search_engine(
+        context: Context, actor_alias: str, search_engine: str):
+    go_to_search_engine(context, actor_alias, search_engine)
 
 
 @when('"{actor_alias}" searches for "{term}" in "{category}" category')

@@ -41,6 +41,9 @@ Feature: Search using SearX
 
     Then "Robert" should see link to "<expected>" page among search results
 
+    @bug
+    @TICKET-222
+    @fixed
     Examples:
       | specific term | selected     | expected                                               |
       | pyconpl       | General      | https://pl.pycon.org/                                  |
@@ -48,7 +51,9 @@ Feature: Search using SearX
       | pyconpl       | Videos       | https://www.youtube.com/user/pyconpl                   |
       | pyconpl       | Social Media | https://twitter.com/timosiia/status/899205699737190400 |
 
-    @wip
+    @bug
+    @TICKET-222
+    @fixme
     Examples: no search results or unreliable search in following categories
       | specific term | selected | expected                                    |
       | pyconpl       | Music    | https://www.youtube.com/watch?v=wt6LmnKyAUw |

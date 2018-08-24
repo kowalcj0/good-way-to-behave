@@ -9,7 +9,9 @@ run functional tests in browsers.
 
 * python 3.6+
 * pip
+* [vitualenv](https://pypi.org/project/virtualenv/) or [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)
 * appropriate [browser driver binaries](https://selenium-python.readthedocs.io/installation.html#drivers) installed in `$PATH`
+* optionally [pip-tools](https://github.com/jazzband/pip-tools) to generate new `requirements.txt`
 
 Then: `pip install -r requirements.txt`
 

@@ -3,7 +3,7 @@
 from behave import given, then, when
 from behave.runner import Context
 
-from steps.declarative_implementations import (
+from steps.step_implementations import (
     go_to_search_engine,
     search_for,
     should_see_url,

@@ -56,8 +56,13 @@ def search(driver: WebDriver, term: str, *, category: str = None) -> ModuleType:
         selector = Selector(category, By.CSS_SELECTOR, link_selector)
         find_and_click(driver, selector, wait_for_page_load=False)
         if category.lower() == "news":
-            news_results = Selector("news results", By.CSS_SELECTOR, "div.result.result--news")
+            news_results = Selector(
+                "news results", By.CSS_SELECTOR, "div.result.result--news")
             wait_for_visibility(driver, news_results)
+        if category.lower() == "videos":
+            videos_results = Selector(
+                "videos results", By.CSS_SELECTOR, "div.tile--vid")
+            wait_for_visibility(driver, videos_results)
     take_screenshot(driver, "After searching")
     from . import results
     return results

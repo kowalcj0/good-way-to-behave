@@ -45,11 +45,11 @@ Feature: Search using SearX
     @TICKET-222
     @fixed
     Examples:
-      | specific term | selected     | expected                                               |
-      | pyconpl       | General      | https://pl.pycon.org/                                  |
-      | pyconpl       | It           | https://github.com/zefciu/pyramid-concepts             |
-      | pyconpl       | Videos       | https://www.youtube.com/user/pyconpl                   |
-      | pyconpl       | Social Media | https://twitter.com/timosiia/status/899205699737190400 |
+      | specific term | selected     | expected                                                |
+      | pyconpl       | General      | https://pl.pycon.org/                                   |
+      | pyconpl       | It           | https://github.com/zefciu/pyramid-concepts              |
+      | pyconpl       | Videos       | https://www.youtube.com/user/pyconpl                    |
+      | pyconpl       | Social Media | https://twitter.com/agaevsky/status/1032238023453360128 |
 
     @bug
     @TICKET-222

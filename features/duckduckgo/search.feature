@@ -42,6 +42,6 @@ Feature: Search using DuckDuckGo
     Then "Robert" should see link to "<expected>" page among search results
 
     Examples:
-      | specific term | selected | expected                                                                          |
-      | pyconpl       | News     | http://www.businessinsider.com/rachel-sklar-on-adria-richards-and-sendgrid-2013-3 |
-      | pyconpl       | Videos   | https://www.youtube.com/watch?v=aEj8W_K1IFE                                       |
+      | specific term | selected | expected                                                           |
+      | pyconpl       | News     | http://www.businessinsider.com/everybody-codes-a-year-later-2011-3 |
+      | pyconpl       | Videos   | https://www.youtube.com/watch?v=aEj8W_K1IFE                        |
